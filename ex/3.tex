@@ -1,0 +1,50 @@
+\subsection{Pontas de um Espaço e o Teorema Alvo}
+Nesta seção abordaremos o conceito de pontas de um espaço topológico geral e apresentaremos o teorema desejado, que diz respeito ao número de pontas de um grafo de Cayley.
+
+Primeiro, para $X$ espaço topológico, definiremos as pontas de $X$.
+
+\begin{definition}
+Dados $r_1$ e $r_2$  raios próprios de $X$ ($r$ é raio de $X$ se, e só se, é função contínua $r:[0, \infty] \rightarrow X$, uma função é própria se toda pré-imagem de compacto é compacta), diremos que esses \textbf{convergem para a mesma ponta} se, e só se, para todo compacto $C$ existe $N \in \mathbb{N}$ tal que $r_1[N, \infty) \cup r_2[N, \infty) \subset X \setminus C$.
+\end{definition}
+\begin{definition}
+Denotamos a classe de equivalência das pontas do raio próprio $r$ por $ponta(r)$ e o conjunto de todas as classes de equivalência do espaço por $pontas(X)$ e diremos que \textbf{X tem N pontas} se, e só se, $N = |pontas(X)|$.
+\end{definition}
+
+Por extensão, definimos o número de pontas de um grupo.
+
+\begin{definition}
+Definiremos o \textbf{número de pontas de um grupo} como o número de pontas de seus grafos de Cayley (note que a ponta de um raio é invariante à composição com quasi-isometria e, portanto, independe da escolha do conjunto gerador).
+\end{definition}
+
+E, boas notícias, agora temos ferramentas suficientes para provar o teorema alvo deste escrito.
+
+Mas antes, observemos alguns exemplos. Note que $\mathbb{Z}$ (ver figura \ref{figure:cay(Z)}) tem duas pontas, $\mathbb{Z}^2$ (ver figura \ref{figure:cay(Z2)}) tem uma ponta (note que o mesmo vale para todo $\mathbb{Z}^n$ com $n \geq 2$) e $\mathbb{Z}/n$ (ver figura \ref{figure:cayfin}) não tem nenhuma ponta (assim como todo grupo finito, já que implica grafo de Cayley compacto).
+
+Analisemos um último exemplo. Chamamos de grupo livre $F_2$ o conjunto de "palavras" com as "letras" $a$, $b$ e seus inversos. Pertencem a esse grupo, por exemplo $a$, $ab$, $baba$, $aaaabba^{-1}b^{-1}aa$, bem como a palavra vazia, que é o elemento neutro.
+
+A figura \ref{figure:cay(ab)} é o grafo de cayley correspondente a $F_2$ gerado por $a$, $b$ e seus inversos. O elemento neutro é o nó central e cada direção representa uma letra adicionada à palavra.
+
+\input{figs/Cay(ab)}
+
+E, enfim, note que esse último grafo tem infinitas pontas. E o teorema seguinte deixará claro, não há como inventar um grupo, em termo de número de pontas, diferente dos que mostramos nos últimos parágrafos.
+
+\begin{theorem}
+Dado um grupo $G$ finitamente gerado, este tem 0, 1, 2 ou infinitas pontas.
+
+\textbf{Prova:} Já sabemos, vide os exemplos, que existem grupos com cada um desses números de pontas. Resta provar que são essas as únicas possibilidades.
+
+Para redução ao absurdo, suponhamos verdadeira a contra-positiva. Ou seja, assuma que haja um grupo $G$ com finitas pontas e para o qual existam raios próprios $r_0, r_1, r_2 : [0, \infty) \rightarrow Cay(G)$ tais que nenhuma combinação destes convirja para a mesma ponta. Sem perda de generalidade, assuma ainda que $r_1(0) = r_2(0) = \mathbbm{1}_G$ (note que aqui, e em toda essa prova, denotaremos, quando possível, o ponto do grafo de Cayley pelo seu correspondente no grupo gerador).
+
+Agora, para todo raio próprio $r : [0, \infty) \rightarrow Cay(G)$ e elemento $g \in G$, podemos definir um raio próprio $g(r) : [0, \infty) \rightarrow Cay(G)$ "deslocado por $g$". Ou seja, tal que $g(r(x)) = g \cdot r(x)$ sempre que $r(x) \in Cay(G)$ e seja estendida adequadamente para as arestas. Note que essa ação de um elemento do grupo sobre o grafo de Cayley (e aqui particularmente sobre um raio próprio do grafo de Cayley) é isometria.
+
+Tomemos $H \subset G$ o conjunto de elementos que agem sobre raios (no sentido do parágrafo anterior) sem modificar sua ponta. Ou seja, $h \in H \Rightarrow h(r)$ está na mesma ponta que $r \ \forall r \in R$. Ainda, como são finitas pontas em $G$, o índice de $H$ é finito.
+
+Como o índice de $H$ é finito, há uma constante $\mu$ tal que, para todo elemento $x$ do grafo, a interseção de $H$ com a bola de raio $\mu$ em torno de $x$ não é vazia. Daí, sem perda de generalidade, podemos definir $r_0$ tal que, $\forall n \in \mathbb{N}$, $d(r_0(n), \mathbbm{1}_G) \geq n$ e $r_0(n) \in H$ (o primeiro requisito pode ser obtido "ajeitando" qualquer raio para que "convirja mais rápido". O segundo pode ser obtido da propriedade citada neste parágrafo, já que $H$ está "próximo de toda aresta"). Denotaremos, para simplificar a notação, $\gamma_n = r_0(n)$.
+
+Fixamos $\rho > 0$ tal que $r_1([\rho, \infty))$, $r_2([\rho, \infty))$ e $r_0([\rho, \infty))$ estejam em diferentes componentes conexos de $Cay(G) \setminus B(\mathbbm{1}_G, \rho)$ (note que é possível fixar $\rho$ adequado pois os raios convergem para pontas diferentes). Portanto, para todo $t, t' > 2 \rho$, $d(\gamma_n(r_1)(t), \gamma_n(r_2)(t')) > 2\rho$ (pois todo caminho unindo esses pontos deve passar por $B(\mathbbm{1}_G, \rho)$).
+
+Da natureza de $H$, para $i \in \{ 1,2\}$ e para todo $n$ natural, $\gamma_n(r_i)$ converge para a mesma ponta de $r_i$. Entretanto, se fixamos $n > 3 \rho$, $\gamma_n(r_i)(0) = \gamma_n$ não está no mesmo componente conexo de $r_i([\rho, \infty))$. Assim, é necessário que $\gamma_n(r_i)$ "passe" por $B(\mathbbm{1}_G, \rho)$ e, portanto, existem $t, t' > 2\rho$ tais que $\gamma_n(r_1)(t) \in B(1, \rho)$, $\gamma_n(r_2)(t') \in B(\mathbbm{1}_G, \rho)$ e $d(\gamma_n(r_1)(t), \gamma_n(r_2)(t')) < 2\rho$.
+
+Temos então uma contradição!
+\qed
+\end{theorem}

@@ -1,0 +1,26 @@
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}
+  \newcommand\polygon[2][]{
+  \pgfmathsetmacro{\angle}{360/#2}
+  \pgfmathsetmacro{\startangle}{-90 + \angle/2}
+  \pgfmathsetmacro{\y}{cos(\angle/2)}
+  \begin{scope}[#1]
+    \foreach \i in {1,2,...,#2} {
+      \pgfmathsetmacro{\x}{\startangle + \angle*\i}
+      \draw[line width=1pt] (\x:1 cm) -- (\x + \angle/2:\y cm) -- cycle;
+      \draw[line width=1pt] (\x + \angle/2:\y cm) -- (\x + \angle:1 cm) -- cycle;
+      \node[draw,circle,inner sep=1.5pt,fill] at (\x + \angle:1 cm) {};
+    }
+  \end{scope}}
+    \begin{scope}
+    %\clip (-6.5,-0.2) rectangle (6.5,3.2);
+    \polygon{3}
+    \polygon[xshift=2.5cm]{5}
+    \polygon[xshift=5cm]{8}
+    \polygon[xshift=7.5cm]{15}
+    \end{scope} 
+  \end{tikzpicture}
+  \caption{Os espaços $Cay(\mathbb{Z}/n, \{\pm1 \})$ para $n$ respectivamente igual a 3, 5, 8 e 15.}
+  \label{figure:cayfin}
+\end{figure}

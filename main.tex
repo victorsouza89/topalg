@@ -1,0 +1,42 @@
+\documentclass{article}
+\input{include}
+
+\pretitle{%
+  \begin{center}
+  \LARGE
+  \includegraphics[height=2cm]{figs/logoUFSCsimples.png} \\
+}
+
+\title{\textbf{\huge Uma Introdução à Topologia Algébrica} \\
+\textbf{Provando um teorema a respeito do número de pontas de um grupo finitamente gerado} \\
+Universidade Federal de Santa Catarina - UFSC \\
+PICME - Programa de Iniciação Científica e Mestrado}
+\author{\textbf{Victor Fernando Lopes de Souza} \\
+Orientador: Sérgio Tadao Martins}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Introdução}
+\input{intro}
+
+\section{Procedimentos}
+\input{contexto}
+
+\foreach \numeroi in {0, 1, 2, 3, ...,99} {%
+    \edef\FileName{ex/\numeroi}%
+    \IfFileExists{\FileName}{%
+        \input{\FileName}%
+        %\newpage
+    }
+}
+
+\section{Considerações Finais}
+\input{conc}
+
+\bibliographystyle{unsrt}
+%\bibliographystyle{apalike}
+\bibliography{refs}
+\end{document}
